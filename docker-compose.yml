@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: remo-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: remo_db
+    ports:
+      - "3100:3306"
+    networks:
+      - remo-net
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: remo-app
+    ports:
+      - "8100:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - remo-net
+
+volumes:
+  mysql_data:
+
+networks:
+  remo-net:
