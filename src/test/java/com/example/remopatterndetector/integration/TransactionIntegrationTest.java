@@ -60,7 +60,7 @@ public class TransactionIntegrationTest {
                 }
                 """.formatted(now());
 
-        mockMvc.perform(post("/api/transactions")
+        mockMvc.perform(post("/api/v1/transactions")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated());
@@ -70,7 +70,7 @@ public class TransactionIntegrationTest {
     void shouldFetchSuspiciousTransactions() throws Exception {
         String userId = "john123";
 
-        mockMvc.perform(get("/api/users/" + userId + "/suspicious"))
+        mockMvc.perform(get("/api/v1/users/" + userId + "/suspicious"))
                 .andExpect(status().isOk());
     }
 
@@ -87,12 +87,12 @@ public class TransactionIntegrationTest {
         }
     """.formatted(userId, now());
 
-        mockMvc.perform(post("/api/transactions")
+        mockMvc.perform(post("/api/v1/transactions")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated());
 
-        mockMvc.perform(get("/api/users/" + userId + "/suspicious"))
+        mockMvc.perform(get("/api/v1/users/" + userId + "/suspicious"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1));
     }
@@ -111,13 +111,13 @@ public class TransactionIntegrationTest {
             }
         """.formatted(userId, now());
 
-            mockMvc.perform(post("/api/transactions")
+            mockMvc.perform(post("/api/v1/transactions")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(json))
                     .andExpect(status().isCreated());
         }
 
-        mockMvc.perform(get("/api/users/" + userId + "/suspicious"))
+        mockMvc.perform(get("/api/v1/users/" + userId + "/suspicious"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1));
     }
