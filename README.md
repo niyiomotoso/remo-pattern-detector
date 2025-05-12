@@ -1,7 +1,7 @@
 
 # Suspicious Activity Pattern Detector
 
-This project is a backend service that detects suspicious activity patterns in financial transactions. It provides RESTful APIs to log user transactions and retrieve any that are flagged as suspicious based on predefined business rules.
+A backend service that detects suspicious activity patterns in financial transactions. It provides RESTful APIs to log user transactions and retrieve any that are flagged as suspicious based on predefined business rules.
 
 I built it with **Spring Boot**, backed by a **MySQL database**, and I packaged with **Docker Compose** for setup and deployment. Unit tests and integration tests are included to ensure robustness. The integration test is powered by **Testcontainers** to replicate production-like behavior.
 
@@ -28,7 +28,7 @@ The Suspicious Activity Pattern Detector is designed to analyze a stream of tran
 - MockMvc for HTTP-level testing
 - Lombok for boilerplate-free models
 
-This service is modular and designed with extensibility in mind. Core services are defined by interfaces, allowing for future implementations (e.g., rule-based vs ML-based detection) without impacting existing layers.
+I made it modular and designed it with extensibility in mind. Core services are defined by interfaces, allowing for future implementations (e.g., rule-based vs ML-based detection) without impacting existing layers.
 
 
 ## ️ Setup Instructions
@@ -38,8 +38,7 @@ Make sure you have the following installed:
 
 - Java 19
 - Maven
-- Docker 
-- Docker Compose
+- Docker and Docker Compose
 
 ### Run the Application with Docker Compose
 
